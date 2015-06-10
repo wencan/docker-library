@@ -8,7 +8,7 @@ RUN wget --no-check-certificate --no-cookies --header "Cookie: oraclelicense=acc
         http://download.oracle.com/otn-pub/java/jdk/7u80-b15/jdk-7u80-linux-x64.tar.gz \
     && tar xzf jdk-7u80-linux-x64.tar.gz \
     && mv jdk1.7.0_80/* ./ \
-    && rm -rf jdk1.7.0_80
+    && rm -rf jdk-7u80-linux-x64.tar.gz jdk1.7.0_80
 
 RUN mkdir -p /usr/lib/jvm/ && ln -s  /opt/jdk /usr/lib/jvm/default-java
 
