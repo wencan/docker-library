@@ -6,30 +6,32 @@ RUN apt-get update \
     && apt-get install -y --no-install-recommends 
         build-essential libtool automake cmake maven zlib1g-dev \
     && rm -rf /var/lib/apt/lists/*
-
-RUN wget https://github.com/google/protobuf/releases/download/v2.5.0/protobuf-2.5.0.tar.gz \
-    && tar xzf protobuf-2.5.0.tar.gz \
-    && cd protobuf-2.5.0 \
+    
+ENV PROTOBUF_VERSION 2.5.0
+RUN wget https://github.com/google/protobuf/releases/download/v2.5.0/protobuf-$PROTOBUF_VERSION.tar.gz \
+    && tar xzf protobuf-$PROTOBUF_VERSION.tar.gz \
+    && cd protobuf-$PROTOBUF_VERSION \
     && ./autogen.sh \
     && ./configure \
     && make \
     && make check \
     && make install \
     && cd ../ \
-    && rm -rf protobuf-2.5.0.tar.gz protobuf-2.5.0 \
+    && rm -rf protobuf-$PROTOBUF_VERSION.tar.gz protobuf-$PROTOBUF_VERSION \
     && ldconfig
 
-RUN wget http://archive.apache.org/dist/hadoop/core/hadoop-2.4.1/hadoop-2.4.1-src.tar.gz \
-    && wget http://archive.apache.org/dist/hadoop/core/hadoop-2.4.1/hadoop-2.4.1-src.tar.gz.asc \
+ENV HADOOP_VERSION 2.4.1
+RUN wget http://archive.apache.org/dist/hadoop/core/hadoop-$HADOOP_VERSION/hadoop-$HADOOP_VERSION-src.tar.gz \
+    && wget http://archive.apache.org/dist/hadoop/core/hadoop-$HADOOP_VERSION/hadoop-$HADOOP_VERSION-src.tar.gz.asc \
     && gpg --keyserver pgpkeys.mit.edu --recv-key A210C095 \
-    && gpg --verify hadoop-2.4.1-src.tar.gz.asc hadoop-2.4.1-src.tar.gz \
-    && tar zxf hadoop-2.4.1-src.tar.gz \
-    && cd hadoop-2.4.1-src \
+    && gpg --verify hadoop-$HADOOP_VERSION-src.tar.gz.asc hadoop-$HADOOP_VERSION-src.tar.gz \
+    && tar zxf hadoop-$HADOOP_VERSION-src.tar.gz \
+    && cd hadoop-$HADOOP_VERSION-src \
     && mvn package -Pdist,native -Dtar \
-    && tar xzf hadoop-dist/target/hadoop-2.4.1.tar.gz \
-    && mv hadoop-2.4.1 /opt/hadoop/
+    && tar xzf hadoop-dist/target/hadoop-$HADOOP_VERSION.tar.gz \
+    && mv hadoop-$HADOOP_VERSION /opt/hadoop/
     && cd ../
-    && rm -rf hadoop-2.4.1-src.tar.gz hadoop-2.4.1-src.tar.gz.asc hadoop-2.4.1-src
+    && rm -rf hadoop-$HADOOP_VERSION-src.tar.gz hadoop-$HADOOP_VERSION-src.tar.gz.asc hadoop-$HADOOP_VERSION-src
     
 EXPORT HADOOP_HOME=/opt/hadoop
     
