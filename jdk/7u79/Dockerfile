@@ -5,7 +5,7 @@ MAINTAINER wencan <i@wencan.org>
 RUN printf "deb http://httpredir.debian.org/debian jessie main contrib" > /etc/apt/sources.list
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \
-        wget java-package build-essential \
+        wget java-package build-essential libgl1-mesa-glx libgtk2.0-0 libxslt1.1 libxtst6 libxxf86vm1 \
     && rm -rf /var/lib/apt/lists/*
 
 RUN groupadd java && useradd -r -g java java
