@@ -33,7 +33,8 @@ RUN wget http://archive.apache.org/dist/hadoop/core/hadoop-$HADOOP_VERSION/hadoo
     && cd ../
     && rm -rf hadoop-$HADOOP_VERSION-src.tar.gz hadoop-$HADOOP_VERSION-src.tar.gz.asc hadoop-$HADOOP_VERSION-src
     
-EXPORT HADOOP_HOME=/opt/hadoop
+ENV HADOOP_HOME /opt/hadoop
+ENV PATH $PATH:$HADOOP_HOME/bin
     
 CMD ["/opt/hadoop/bin/hadoop"]
 
