@@ -3,7 +3,7 @@ FROM java:openjdk-7u79-jdk
 MAINTAINER wencan <i@wencan.org>
 
 RUN apt-get update \
-    && apt-get install -y --no-install-recommends build-essential libtool automake maven \
+    && apt-get install -y --no-install-recommends build-essential libtool automake cmake maven \
     && rm -rf /var/lib/apt/lists/*
 
 RUN wget https://github.com/google/protobuf/releases/download/v2.5.0/protobuf-2.5.0.tar.gz \
