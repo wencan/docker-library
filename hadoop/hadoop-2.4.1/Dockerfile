@@ -24,7 +24,7 @@ RUN wget http://archive.apache.org/dist/hadoop/core/hadoop-2.4.1/hadoop-2.4.1-sr
     && gpg --verify hadoop-2.4.1-src.tar.gz.asc hadoop-2.4.1-src.tar.gz \
     && tar zxf hadoop-2.4.1-src.tar.gz \
     && cd hadoop-2.4.1-src \
-    && mvn package -Pdist,native -DskipTests -Dtar \
+    && mvn package -Pdist,native -Dtar \
     && tar xzf hadoop-dist/target/hadoop-2.4.1.tar.gz \
     && mv hadoop-2.4.1 /opt/hadoop/
     && cd ../
