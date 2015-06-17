@@ -3,7 +3,7 @@ FROM java:openjdk-7u79-jdk
 MAINTAINER wencan <i@wencan.org>
 
 RUN apt-get update \
-    && apt-get install -y --no-install-recommends 
+    && apt-get install -y --no-install-recommends \
         build-essential libtool automake cmake maven zlib1g-dev \
     && rm -rf /var/lib/apt/lists/*
     
