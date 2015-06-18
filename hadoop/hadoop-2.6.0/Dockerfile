@@ -4,7 +4,7 @@ MAINTAINER wencan <i@wencan.org>
 
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \
-        build-essential libtool automake cmake maven zlib1g-dev libssl-dev \
+        build-essential libtool automake cmake maven zlib1g-dev libssl-dev pkg-config \
     && rm -rf /var/lib/apt/lists/*
     
 ENV PROTOBUF_VERSION 2.5.0
