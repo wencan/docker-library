@@ -32,7 +32,8 @@ RUN wget http://archive.apache.org/dist/hadoop/core/hadoop-$HADOOP_VERSION/hadoo
     && mv hadoop-$HADOOP_VERSION /opt/hadoop/ \
     && cd ../ \
     && rm -rf hadoop-$HADOOP_VERSION-src.tar.gz hadoop-$HADOOP_VERSION-src.tar.gz.asc hadoop-$HADOOP_VERSION-src
-    
+
+ENV JAVA_HOME /usr/lib/jvm/java-7-openjdk-amd64
 ENV HADOOP_HOME /opt/hadoop
 ENV PATH $PATH:$HADOOP_HOME/bin
     
