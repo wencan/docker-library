@@ -27,7 +27,7 @@ RUN wget http://archive.apache.org/dist/hadoop/core/hadoop-$HADOOP_VERSION/hadoo
     && gpg --verify hadoop-$HADOOP_VERSION-src.tar.gz.asc hadoop-$HADOOP_VERSION-src.tar.gz \
     && tar zxf hadoop-$HADOOP_VERSION-src.tar.gz \
     && cd hadoop-$HADOOP_VERSION-src \
-    && mvn package -Pdist,native -Dtar \
+    && mvn package -Pdist,native -DskipTests -Dtar \
     && tar xzf hadoop-dist/target/hadoop-$HADOOP_VERSION.tar.gz \
     && mv hadoop-$HADOOP_VERSION /opt/hadoop/ \
     && cd ../ \
