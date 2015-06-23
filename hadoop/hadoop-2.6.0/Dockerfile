@@ -8,7 +8,7 @@ RUN apt-get update \
     && rm -rf /var/lib/apt/lists/*
     
 ENV PROTOBUF_VERSION 2.5.0
-RUN wget https://github.com/google/protobuf/releases/download/v2.5.0/protobuf-$PROTOBUF_VERSION.tar.gz \
+RUN wget https://github.com/google/protobuf/releases/download/v$PROTOBUF_VERSION/protobuf-$PROTOBUF_VERSION.tar.gz \
     && tar xzf protobuf-$PROTOBUF_VERSION.tar.gz \
     && cd protobuf-$PROTOBUF_VERSION \
     && ./autogen.sh \
@@ -37,5 +37,5 @@ ENV JAVA_HOME /usr/lib/jvm/java-7-openjdk-amd64
 ENV HADOOP_HOME /opt/hadoop
 ENV PATH $PATH:$HADOOP_HOME/bin
     
-CMD ["/opt/hadoop/bin/hadoop"]
+CMD ["hadoop"]
 
