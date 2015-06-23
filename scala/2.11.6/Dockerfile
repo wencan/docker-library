@@ -1,4 +1,4 @@
-FROM java:openjdk-7u79-jdk
+FROM java:openjdk-7-jdk
 
 MAINTAINER wencan <i@wencan.org>
 
