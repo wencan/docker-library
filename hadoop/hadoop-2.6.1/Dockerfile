@@ -20,10 +20,13 @@ RUN wget https://github.com/google/protobuf/releases/download/v$PROTOBUF_VERSION
     && rm -rf protobuf-$PROTOBUF_VERSION.tar.gz protobuf-$PROTOBUF_VERSION \
     && ldconfig
 
-ENV HADOOP_VERSION 2.4.1
+RUN wget https://dist.apache.org/repos/dist/release/hadoop/common/KEYS \
+    && gpg --import KEYS \
+    && rm KEYS
+
+ENV HADOOP_VERSION 2.6.1
 RUN wget http://archive.apache.org/dist/hadoop/core/hadoop-$HADOOP_VERSION/hadoop-$HADOOP_VERSION-src.tar.gz \
     && wget http://archive.apache.org/dist/hadoop/core/hadoop-$HADOOP_VERSION/hadoop-$HADOOP_VERSION-src.tar.gz.asc \
-    && gpg --keyserver pgpkeys.mit.edu --recv-key A210C095 \
     && gpg --verify hadoop-$HADOOP_VERSION-src.tar.gz.asc hadoop-$HADOOP_VERSION-src.tar.gz \
     && tar zxf hadoop-$HADOOP_VERSION-src.tar.gz \
     && cd hadoop-$HADOOP_VERSION-src \
