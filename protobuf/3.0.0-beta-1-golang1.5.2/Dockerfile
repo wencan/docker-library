@@ -1,4 +1,4 @@
-FROM golang:1.5.1
+FROM golang:1.5.2
 
 MAINTAINER wencan <i@wencan.org>
 
