@@ -23,7 +23,7 @@ RUN wget --no-check-certificate --no-cookies --header "Cookie: oraclelicense=acc
 
 WORKDIR /
 
-RUN ln -s /usr/lib/jvm/jdk-8-oracle-x64 /usr/lib/jvm/default-java
+RUN ln -s /usr/lib/jvm/oracle-java8-jdk-amd64 /usr/lib/jvm/default-java
 ENV JAVA_HOME /usr/lib/jvm/default-java
 
 CMD ["java"]
